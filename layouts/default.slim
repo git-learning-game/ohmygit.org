@@ -1,0 +1,48 @@
+doctype html
+html lang=lang_for(@item)
+  head
+    meta charset="utf-8"
+    title
+      - if @item.path != "/" and @item[:title]
+        = @item[:title]
+      - else
+        | Oh My Git!
+
+    meta name="author" content="Sebastian Morr"
+
+    - if @item[:published]
+      meta name="date" content=@item[:published].strftime("%Y-%m-%d")
+
+    meta name="description" content=abstract_for(@item)
+
+    meta name="twitter:card" content="summary_large_image"
+    meta name="twitter:title" content=@item[:title]
+    meta name="twitter:description" content=abstract_for(@item)
+    meta name="twitter:image" content=domain[0..-2]+thumbnail_for(@item)
+
+    meta property="og:title" content=@item[:title]
+    meta property="og:type" content="website"
+    meta property="og:url" content=domain[0..-2]+@item.path
+    meta property="og:image" content=domain[0..-2]+thumbnail_for(@item)
+    meta property="og:description" content=abstract_for(@item)
+
+    - if @item[:noindex]
+      meta name="robots" content="noindex"
+
+    meta name="viewport" content="width=device-width, initial-scale=0.8, maximum-scale=0.8"
+
+    link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>💥</text></svg>"
+
+    link rel="stylesheet" href="/assets/style.css"
+    link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:400,400i,800"
+
+    script src="/assets/scripts/init.js"
+
+  body
+    - if @item.path != "/quiz/"
+      a href="/"
+        img.logo src="/assets/images/oh-my-git.png"
+
+      p.claim An open source game about learning Git!
+
+    == yield
