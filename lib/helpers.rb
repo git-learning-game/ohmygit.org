@@ -4,8 +4,8 @@ include Nanoc::Helpers::ChildParent
 def tabs
     [
         @items["/index.*"],
-        @items["/download/index.*"],
-        @items["/about/index.*"],
+        @items["/press/index.*"],
+        @items["/videos/index.*"],
     ]
 end
 

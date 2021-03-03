@@ -31,18 +31,19 @@ html lang=lang_for(@item)
 
     meta name="viewport" content="width=device-width, initial-scale=0.8, maximum-scale=0.8"
 
-    link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>💥</text></svg>"
+    link rel="icon" href="assets/images/favicon.svg"
 
     link rel="stylesheet" href="/assets/style.css"
     link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:400,400i,800"
 
-    script src="/assets/scripts/init.js"
-
   body
-    - if @item.path != "/quiz/"
-      a href="/"
-        img.logo src="/assets/images/oh-my-git.png"
-
-      p.claim An open source game about learning Git!
+    a href="/"
+      img.logo src="/assets/images/oh-my-git.png"
+    p.claim An open source game about learning Git!
+    ul#nav
+      - for i in tabs
+        li class=("active" if i.path == @item.path)
+          a href=i.path
+            = i[:title]
 
     == yield
