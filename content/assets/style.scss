@@ -57,8 +57,16 @@ img.avatar {
 
 p,
 ul,
-pre {
+pre,
+blockquote {
     margin-bottom: 1em;
+}
+
+blockquote {
+    margin-top: 1.5em;
+    font-style: italic;
+    font-size: 120%;
+    color: #666;
 }
 
 li {
@@ -242,6 +250,7 @@ img {
 
 video {
     width: 100%;
+    margin-bottom: 1em;
 }
 
 .claim {

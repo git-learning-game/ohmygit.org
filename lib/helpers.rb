@@ -66,7 +66,7 @@ def title_for item
 end
 
 def abstract_for item
-    "An open source Git learning game"
+    "An open source game about learning Git"
 end
 
 def thumbnail_for item
