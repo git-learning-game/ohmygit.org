@@ -57,21 +57,20 @@ def lang_for item
     end
 end
 
-def abstract_for item
-    if item[:subtitle]
-        item[:subtitle]
+def title_for item
+    if item.path == "/"
+        "Oh My Git!"
     else
-        content = item.raw_content.dup
-        content.gsub!(/!\[([^\]]*)\]\([^)]*\)/,"") # remove images
-        content.gsub!(/\[([^\]]*)\]\([^)]*\)/,"\\1") # replace links with link text
-        content.gsub!(/[*"]/,"") # remove italic and bold markers and quotations
-        content.strip!
-        abstract = content[/^[[:print:]]{20,256}[.…!?:*]/] || item[:title]
+        item[:title] + " - Oh My Git!"
     end
 end
 
+def abstract_for item
+    "An open source Git learning game"
+end
+
 def thumbnail_for item
-    item.identifier.without_ext+".png"
+    "/assets/images/cover.png"
 end
 
 def with_tag tag

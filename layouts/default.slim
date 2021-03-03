@@ -2,11 +2,7 @@ doctype html
 html lang=lang_for(@item)
   head
     meta charset="utf-8"
-    title
-      - if @item.path != "/" and @item[:title]
-        = @item[:title]
-      - else
-        | Oh My Git!
+    title =title_for(@item)
 
     meta name="author" content="Sebastian Morr"
 
@@ -16,11 +12,11 @@ html lang=lang_for(@item)
     meta name="description" content=abstract_for(@item)
 
     meta name="twitter:card" content="summary_large_image"
-    meta name="twitter:title" content=@item[:title]
+    meta name="twitter:title" content=title_for(@item)
     meta name="twitter:description" content=abstract_for(@item)
     meta name="twitter:image" content=domain[0..-2]+thumbnail_for(@item)
 
-    meta property="og:title" content=@item[:title]
+    meta property="og:title" content=title_for(@item)
     meta property="og:type" content="website"
     meta property="og:url" content=domain[0..-2]+@item.path
     meta property="og:image" content=domain[0..-2]+thumbnail_for(@item)
